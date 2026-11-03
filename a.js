@@ -82,8 +82,10 @@
     try {
       var target = amendment ? amendment.hash : baseHash;
       var challenge = await R.relayChallenge(f.rid, target, f.n);
+      var allow = Array.isArray(f.c) ? f.c.map(function (id) { return { type: "public-key", id: R.bytesFromB64u(id).buffer }; }) : [];
       var cred = await navigator.credentials.get({ publicKey: {
-        challenge: R.bytesFromB64u(challenge).buffer, rpId: f.rp, timeout: 120000, userVerification: "required" } });
+        challenge: R.bytesFromB64u(challenge).buffer, rpId: f.rp, timeout: 120000, userVerification: "required",
+        allowCredentials: allow } });
       var reply = { v: 1, k: "approve", rid: f.rid, n: f.n, mode: amendment ? "amended" : "as_proposed",
                     credential: R.credentialJson(cred, "get") };
       if (amendment) { reply.payload = amendment.doc.approved.payload; }
