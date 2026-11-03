@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<title>承認の確認(メール)</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>承認の確認(メール)</h1>
+  <p id="status" class="status" role="status"></p>
+  <dl>
+    <dt>操作</dt><dd id="op"></dd>
+    <dt>宛先</dt><dd id="dest"></dd>
+    <dt>内容 (payload)</dt><dd><pre id="payload"></pre></dd>
+    <dt>参照した知識の版</dt><dd><pre id="reference"></pre></dd>
+    <dt>期限</dt><dd id="expires"></dd>
+    <dt>manifest_hash (末尾4文字)</dt><dd id="hash-tail" class="tail"></dd>
+    <dt>manifest_hash (全体)</dt><dd id="hash-full" class="mono"></dd>
+  </dl>
+  <section id="edit-box" class="card-inner" hidden>
+    <h2>内容を修正する</h2>
+    <textarea id="editor" class="editor" rows="8" spellcheck="false" autocapitalize="off" autocomplete="off"></textarea>
+    <div class="buttons"><button id="apply" class="neutral" type="button">修正内容を確かめる</button></div>
+  </section>
+  <section id="amend-box" class="card-inner" hidden>
+    <h2>修正版(これが実行されます)</h2>
+    <dl>
+      <dt>元の提案からの変更</dt><dd><pre id="diff"></pre></dd>
+      <dt>修正版の hash (末尾4文字)</dt><dd id="amend-tail" class="tail"></dd>
+      <dt>修正版の hash (全体)</dt><dd id="amend-full" class="mono"></dd>
+    </dl>
+    <div class="buttons"><button id="drop" class="neutral" type="button">修正をやめる</button></div>
+  </section>
+  <p id="message" class="message" role="alert"></p>
+  <div class="buttons">
+    <button id="approve" class="approve" type="button" hidden>承認 (Face ID)</button>
+    <button id="edit" class="neutral" type="button" hidden>修正する</button>
+  </div>
+  <p class="note">この画面は、メールのリンクの中身から hash をこの端末で計算し直して表示しています。PC の画面の末尾4文字と同じか確かめてください。承認すると返信メールの画面になります。そのまま送信してください。</p>
+</main>
+<script src="common.js"></script>
+<script src="a.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; base-uri 'none'; form-action 'none'">
+<title>メール承認用パスキーの登録</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <h1>メール承認用パスキーの登録</h1>
+  <p id="status" class="status" role="status"></p>
+  <p class="note">登録しただけでは使えません。返信メールを送ったあと、PC の Gate の画面で、今あるパスキー(USB キーなど)で有効にしてください。</p>
+  <p id="message" class="message" role="alert"></p>
+  <div class="buttons"><button id="register" class="approve" type="button" hidden>この iPhone に登録 (Face ID)</button></div>
+</main>
+<script src="common.js"></script>
+<script src="e.js"></script>
+</body>
+</html>

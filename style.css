@@ -1,0 +1,31 @@
+/* GATE_TRIAL_20261029: phone screen and PC console styles (no inline styles: the CSP forbids them). */
+[hidden] { display: none !important; }
+body { font-family: -apple-system, "Hiragino Sans", "Yu Gothic", sans-serif; margin: 0; background: #f4f4f6; color: #111; }
+main { max-width: 36rem; margin: 0 auto; padding: 1rem; }
+h1 { font-size: 1.25rem; }
+dl { background: #fff; border-radius: 0.5rem; padding: 0.75rem 1rem; }
+dt { font-size: 0.8rem; color: #555; margin-top: 0.6rem; }
+dd { margin: 0.1rem 0 0 0; word-break: break-all; }
+pre { white-space: pre-wrap; background: #f0f0f2; padding: 0.5rem; border-radius: 0.25rem; margin: 0; }
+.mono { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.8rem; }
+.tail { font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 2rem; letter-spacing: 0.15em; font-weight: 700; }
+.status { font-size: 1.1rem; font-weight: 700; padding: 0.6rem 0.8rem; border-radius: 0.4rem; border: 2px solid; }
+.st-pending { background: #fff7d6; border-color: #c9a400; }
+.st-approved { background: #e3f0ff; border-color: #2b6cb0; }
+.st-executing { background: #e3f0ff; border-color: #2b6cb0; border-style: dashed; }
+.st-succeeded { background: #e0f5e4; border-color: #2f855a; }
+.st-failed { background: #fde2e2; border-color: #c53030; }
+.st-rejected { background: #ececec; border-color: #555; text-decoration: line-through; }
+.st-expired { background: #ececec; border-color: #999; border-style: dotted; color: #555; }
+.st-unknown { background: #ffe9d2; border-color: #dd6b20; border-style: double; border-width: 5px; }
+.st-other { background: #fff; border-color: #999; }
+.message { color: #9b1c1c; min-height: 1.2rem; }
+.buttons button { font-size: 1.1rem; padding: 0.8rem 1.4rem; margin-right: 0.6rem; border-radius: 0.5rem; border: 0; }
+.approve { background: #2f855a; color: #fff; }
+.reject { background: #c53030; color: #fff; }
+.note { font-size: 0.8rem; color: #555; }
+.card { background: #fff; margin: 1rem; padding: 1rem; border-radius: 0.5rem; }
+.neutral { background: #4a5568; color: #fff; }
+.card-inner { background: #fff; border-radius: 0.5rem; padding: 0.75rem 1rem; margin: 1rem 0; border: 2px solid #2b6cb0; }
+.card-inner h2 { font-size: 1rem; margin: 0 0 0.5rem 0; }
+.editor { width: 100%; box-sizing: border-box; font-family: ui-monospace, Menlo, Consolas, monospace; font-size: 0.9rem; }
