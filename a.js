@@ -88,7 +88,7 @@
                     credential: R.credentialJson(cred, "get") };
       if (amendment) { reply.payload = amendment.doc.approved.payload; }
       var subject = "Re: [MoCKA Gate] " + (amendment ? "修正版を承認 " : "承認 ") + R.tailDisplay(target);
-      location.href = R.mailto(f.r, subject, R.replyBlock(reply));
+      R.showReply(document, f.r, subject, R.replyBlock(reply));
       $("status").textContent = "返信メールを送信してください";
       $("approve").hidden = true;
       $("edit").hidden = true;
@@ -102,5 +102,12 @@
   $("edit").addEventListener("click", startEdit);
   $("apply").addEventListener("click", function () { window.__lastAction = apply(); return window.__lastAction; });
   $("drop").addEventListener("click", drop);
+  $("copy").addEventListener("click", function () {
+    var t = $("reply-text").textContent;
+    window.__lastAction = navigator.clipboard.writeText(t).then(function () {
+      $("message").textContent = "コピーしました。届いたメールに返信して、本文に貼り付けて送信してください。";
+    }, function () { $("message").textContent = "コピーできませんでした。下の文字を長押しで選んでコピーしてください。"; });
+    return window.__lastAction;
+  });
   window.__pageReady = load();
 })();

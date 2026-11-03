@@ -35,6 +35,12 @@
     </dl>
     <div class="buttons"><button id="drop" class="neutral" type="button">修正をやめる</button></div>
   </section>
+  <section id="send-box" class="card-inner" hidden>
+    <h2>返信を送る</h2>
+    <p class="note">「返信メールを開く」を押して、開いたメールをそのまま送信してください。開かないときは「文字をコピー」を押し、届いたメールに返信して、本文に貼り付けて送信してください(宛先は gate@nsjp.org)。</p>
+    <div class="buttons"><a id="send" class="approve button-link" href="#">返信メールを開く</a><button id="copy" class="neutral" type="button">文字をコピー</button></div>
+    <pre id="reply-text"></pre>
+  </section>
   <p id="message" class="message" role="alert"></p>
   <div class="buttons">
     <button id="approve" class="approve" type="button" hidden>承認 (Face ID)</button>

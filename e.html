@@ -13,6 +13,12 @@
   <h1>メール承認用パスキーの登録</h1>
   <p id="status" class="status" role="status"></p>
   <p class="note">登録しただけでは使えません。返信メールを送ったあと、PC の Gate の画面で、今あるパスキー(USB キーなど)で有効にしてください。</p>
+  <section id="send-box" class="card-inner" hidden>
+    <h2>返信を送る</h2>
+    <p class="note">「返信メールを開く」を押して、開いたメールをそのまま送信してください。開かないときは「文字をコピー」を押し、届いたメールに返信して、本文に貼り付けて送信してください(宛先は gate@nsjp.org)。</p>
+    <div class="buttons"><a id="send" class="approve button-link" href="#">返信メールを開く</a><button id="copy" class="neutral" type="button">文字をコピー</button></div>
+    <pre id="reply-text"></pre>
+  </section>
   <p id="message" class="message" role="alert"></p>
   <div class="buttons"><button id="register" class="approve" type="button" hidden>この iPhone に登録 (Face ID)</button></div>
 </main>

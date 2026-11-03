@@ -103,6 +103,17 @@ var GateRelay = (function () {
     return "-----BEGIN MOCKA GATE REPLY-----\n" + lines.join("\n") + "\n-----END MOCKA GATE REPLY-----";
   }
 
+  // iOS Safari may refuse to open Mail by itself after Face ID: a link the person taps always works, and the text can
+  // be copied into an ordinary reply as a last resort.
+  function showReply(doc, to, subject, block) {
+    var url = mailto(to, subject, block);
+    doc.getElementById("send").href = url;
+    doc.getElementById("reply-text").textContent = block;
+    doc.getElementById("send-box").hidden = false;
+    try { location.href = url; } catch (e) { /* the button stays */ }
+    return url;
+  }
+
   function mailto(to, subject, body) {
     return "mailto:" + encodeURIComponent(to).replace(/%40/g, "@") + "?subject=" + encodeURIComponent(subject) +
            "&body=" + encodeURIComponent(body);
@@ -110,5 +121,6 @@ var GateRelay = (function () {
 
   return { jcs: jcs, hashOf: hashOf, fragment: fragment, relayChallenge: relayChallenge, payloadDiff: payloadDiff,
            buildAmendment: buildAmendment, tailDisplay: tailDisplay, credentialJson: credentialJson,
-           replyBlock: replyBlock, mailto: mailto, bytesFromB64u: bytesFromB64u, framed: framed };
+           replyBlock: replyBlock, mailto: mailto, bytesFromB64u: bytesFromB64u, framed: framed,
+           showReply: showReply };
 })();

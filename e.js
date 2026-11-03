@@ -27,7 +27,7 @@
         pubKeyCredParams: [{ type: "public-key", alg: -7 }], attestation: "none", timeout: 120000,
         authenticatorSelection: { residentKey: "required", userVerification: "required" } } });
       var reply = { v: 1, k: "enroll", n: f.n, credential: R.credentialJson(cred, "create") };
-      location.href = R.mailto(f.r, "Re: [MoCKA Gate] パスキーの登録 " + cred.id.slice(-6), R.replyBlock(reply));
+      R.showReply(document, f.r, "Re: [MoCKA Gate] パスキーの登録 " + cred.id.slice(-6), R.replyBlock(reply));
       $("status").textContent = "返信メールを送信してください。ID の末尾: " + cred.id.slice(-6);
       $("register").hidden = true;
     } catch (e) {
@@ -37,5 +37,12 @@
   }
 
   $("register").addEventListener("click", function () { window.__lastAction = register(); return window.__lastAction; });
+  $("copy").addEventListener("click", function () {
+    var t = $("reply-text").textContent;
+    window.__lastAction = navigator.clipboard.writeText(t).then(function () {
+      $("message").textContent = "コピーしました。届いたメールに返信して、本文に貼り付けて送信してください。";
+    }, function () { $("message").textContent = "コピーできませんでした。下の文字を長押しで選んでコピーしてください。"; });
+    return window.__lastAction;
+  });
   window.__pageReady = load();
 })();
