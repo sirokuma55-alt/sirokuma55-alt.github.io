@@ -75,8 +75,19 @@
     $("approve").textContent = "承認 (Face ID)";
   }
 
+  // the text in the edit box that would be signed if the doctor pressed "check" now
+  function pendingEdit() {
+    if ($("edit-box").hidden) { return false; }
+    var applied = amendment ? amendment.doc.approved.payload : f.m.payload;
+    try { return R.jcs(JSON.parse($("editor").value)) !== R.jcs(applied); } catch (e) { return true; }
+  }
+
   async function approve() {
     if (!ready) { return; }
+    if (pendingEdit()) {          // never sign the proposal while an edit that was not checked is on the screen
+      message("書き換えた内容がまだ反映されていません。「修正内容を確かめる」を押してから承認してください。");
+      return;
+    }
     message("");
     $("approve").disabled = true;
     try {
